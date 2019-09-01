@@ -1,0 +1,77 @@
+Country,iso,Physics,Chemistry,Physiology_or_Medicine,Literature,Peace,Economics,Total
+Algeria,DZA,1,0,0,1,0,0,2
+Argentina,ARG,0,0,2,0,2,0,4
+Australia,AUS,2,1,7,0,0,0,10
+Austria,AUT,3,5,6,1,1,1,17
+Azerbaijan,AZE,1,0,0,0,0,0,1
+Belarus,BLR,1,0,0,0,2,2,5
+Belgium,BEL,1,1,3,1,3,0,9
+Bosnia and Herzegovina,BIH,0,1,0,1,0,0,2
+Brazil,BRA,0,0,1,0,0,0,1
+Bangladesh,BGD,0,0,0,0,1,0,1
+Bulgaria,BGR,0,0,0,1,0,0,1
+Canada,CAN,4,4,4,2,1,3,18
+Chile,CHL,0,0,0,2,0,0,2
+China,CHN,5,1,2,2,2,0,12
+Colombia,COL,0,0,0,1,1,0,2
+Costa Rica,CRI,0,0,0,0,1,0,1
+Croatia,HRV,0,1,0,0,0,0,1
+Cyprus,CYP,0,0,0,0,0,1,1
+Czech Republic,CZE,1,1,2,1,1,0,6
+Denmark,DNK,2,1,4,4,1,0,12
+East Timor,TLS,0,0,0,0,2,0,2
+Egypt,EGY,0,2,0,1,3,0,6
+Finland,FIN,0,1,1,1,1,1,5
+France,FRA,9,9,12,11,10,3,54
+Germany,DEU,24,24,18,8,5,1,80
+Ghana,GHA,0,0,0,0,1,0,1
+Greece,GRC,0,0,0,1,0,0,1
+Guadeloupe Island ,GLP,0,0,0,1,0,0,1
+Guatemala,GTM,0,0,0,1,1,0,2
+Hungary,HUN,2,3,2,1,0,1,9
+Iceland,ISL,0,0,0,1,0,0,1
+India,IND,1,1,2,2,1,1,8
+Indonesia,IDN,0,0,1,0,0,0,1
+Iran,IRN,0,0,0,1,1,0,2
+Ireland,IRL,1,0,1,3,0,0,5
+Israel,ISR,0,4,0,0,1,1,6
+Italy,ITA,5,1,5,6,1,1,19
+Japan,JPN,11,6,4,2,1,0,24
+Kenya,KEN,0,0,0,0,1,0,1
+Latvia,LVA,0,1,0,0,0,0,1
+Liberia,LBR,0,0,0,0,2,0,2
+Lithuania,LTU,0,1,1,1,0,0,3
+Luxembourg,LUX,1,0,1,0,0,0,2
+Macedonia,MKD,0,0,0,0,1,0,1
+Madagascar,MDG,0,0,0,1,0,0,1
+Mexico,MEX,0,1,0,1,1,0,3
+Morocco,MAR,1,0,0,0,0,0,1
+Myanmar,MMR,0,0,0,0,1,0,1
+Netherlands,NLD,9,4,2,0,1,2,18
+New Zealand,NZL,0,2,1,0,0,0,3
+Nigeria,NGA,0,0,0,1,0,0,1
+Norway,NOR,1,2,2,2,2,3,12
+Pakistan,PAK,2,0,0,0,1,0,3
+Peru,PER,0,0,0,1,0,0,1
+Poland,POL,8,4,6,5,2,1,26
+Portugal,PRT,0,0,1,1,0,0,2
+Romania,ROU,0,1,1,1,1,0,4
+Russia,RUS,10,4,2,5,2,3,26
+Saint Lucia,LCA,0,0,0,1,0,1,2
+Slovakia,SVK,1,0,0,0,0,0,1
+Slovenia,SVN,0,1,0,0,0,0,1
+South Africa,ZAF,0,1,3,2,3,0,9
+South Korea,KOR,0,1,0,0,1,0,2
+Spain,ESP,0,0,2,5,0,0,7
+Sweden,SWE,4,4,7,7,5,2,29
+Switzerland,CHE,4,2,6,1,3,0,16
+Taiwan,TWN,0,1,0,0,0,0,1
+Trinidad,TTO,0,0,0,1,0,0,1
+Turkey,TUR,0,1,0,2,0,0,3
+Ukraine,UKR,0,1,2,2,0,0,5
+United Kingdom,GBR,23,24,26,7,11,8,99
+USA,USA,66,52,70,9,19,43,259
+Venezuela,VEN,0,0,1,0,0,0,1
+Vietnam,VNM,0,0,0,0,1,0,1
+Yemen,YEM,0,0,0,0,1,0,1
+Zimbabwe,ZWE,0,0,0,0,1,0,1

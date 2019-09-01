@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hans Roslings Visualization Replica</title>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css">
+	body{margin:0px;}
+	h1 {
+		font-weight: 400;
+		color: #3f007d;
+		font-family: 'PT Sans', sans-serif;
+		font-size: 52px;
+		margin-bottom: 10px;
+		margin-top: 20px;
+		padding-left: 50px;
+	}
+
+	p {
+		font-size: 18px;
+		width: 1000px;
+		margin-top: 10px;
+		padding-left: 50px;
+		margin-bottom: 10px;
+	}
+
+	a {
+		color: #3f007d;
+	}
+
+	a:hover {
+		color: #6a51a3;
+	}
+
+	.footer {
+		font-size: 14px;
+		margin-top: 0px;
+	}
+
+	.h,.v{stroke:black;stroke-dasharray:4 4;stroke-width:1;stroke-opacity:.5;}
+	.axis path,
+	.axis line {
+		opacity: 1;
+    	fill: none;
+    	stroke: black;
+    	shape-rendering: crispEdges;
+	}
+	.axis text {
+    	font-family: sans-serif;
+    	font-size: 11px;
+	}
+	.axis path, .axis line {
+		opacity: 1;
+		fill: none;
+		stroke: #4e5a64;
+		shape-rendering: crispEdges;
+	}
+
+	.y.axis line {
+		stroke: #fff;
+		stroke-dasharray: 1,2;
+		opacity: 1;
+	}
+
+	.axis text {
+		fill: #4e5a64;
+		font-size: 10px;
+	}
+
+	.dot{
+		stroke: #000;
+		pointer-events: all;
+		cursor: pointer;
+	}
+	.label {
+  		fill: #777;
+	}
+	#x_label, #y_label{
+		font-size: 20px;
+	}
+	.year.label {
+  		font-family: 'Graduate';
+  		font-size: 180px;
+  		font: 500 200px;
+  		fill: #ddd;
+	}
+	.year.label.active {
+  		fill: #aaa;
+	}
+	.tab-head{
+		background-color: #ddd;
+	}
+	.overlay {
+  		fill: none;
+  		pointer-events: all;
+	}
+	.legend {
+	    padding: 5px;
+		font: 10px sans-serif;
+		background: yellow;
+		box-shadow: 2px 2px 1px #888;
+		
+	}
+	.text_basic{
+		font-weight: 300;
+		font-size: 42px;
+		font-family: Roboto;
+		color: #3e4a54;
+		width: 1300px;
+		margin-top: 10px;
+		margin-bottom: 0px;
+		text-align: center;
+	}
+	.replay_button{
+		width: 1200px;
+		text-align: right;
+	}
+	.replay_button_class {
+		-moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
+		-webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
+		box-shadow: 0px 1px 0px 0px #f0f7fa;
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #33bdef), color-stop(1, #019ad2));
+		background:-moz-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+		background:-webkit-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+		background:-o-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+		background:-ms-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+		background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bdef', endColorstr='#019ad2',GradientType=0);
+		background-color:#33bdef;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+		border-radius:6px;
+		border:1px solid #057fd0;
+		display:inline-block;
+		cursor:pointer;
+		color:#ffffff;
+		font-family:Arial;
+		font-size:15px;
+		font-weight:bold;
+		padding:6px 24px;
+		text-decoration:none;
+		text-shadow:0px -1px 0px #5b6178;
+	}
+	.replay_button_class:hover {
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #019ad2), color-stop(1, #33bdef));
+		background:-moz-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+		background:-webkit-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+		background:-o-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+		background:-ms-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+		background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#019ad2', endColorstr='#33bdef',GradientType=0);
+		background-color:#019ad2;
+	}
+	.replay_button_class:active {
+		position:relative;
+		top:1px;
+	}
+	.chart-svg-component {
+		background-color: #777;
+		stroke: #777;
+	}
+	.child{
+		display: inline-block;
+	}
+	.slider_text{
+		padding-top: 10px;
+		font-family: sans-serif;
+    	font-size: 13px;
+    	color: #777;
+	}
+	.table{
+		width: 1200px;
+	}
+	#chart{
+		padding-left: 20px;
+	}
+	#bar_chart{
+		padding-left: 20px;
+	}
+	div.tooltip {	
+		    position: absolute;			
+		    text-align: center;			
+			white-space: normal;					
+		    padding: 2px;				
+		    font-size: 14px;		
+		    background: whitesmoke;	
+		    border: 1px solid gray;	
+		    border-radius: 4px;			
+		    pointer-events: none;
+			cursor: none;			
+	}
+	.tab{
+		padding: 0 80px;
+	}
+	</style>
+	<script type="text/javascript">
+		//Vertical Slider
+		$( function() {
+			$( "#slider-vertical" ).slider({
+				orientation: "vertical",
+				range: "min",
+				min: 1900,
+				max: 2015,
+				slide: function( event, ui ) {
+					$( "#selected_year" ).val( ui.value );
+				}
+			});
+			$( "#slider-vertical2" ).slider({
+				orientation: "vertical",
+				range: "min",
+				min: 1900,
+				max: 2015,
+				slide: function( event, ui ) {
+					$( "#selected_year" ).val( ui.value );
+				}
+			});
+			$( "#selected_year" ).val( $( "#slider-vertical" ).slider( "value" ) );
+		} );
+	</script>
+</head>
+<body>
+	<h1 class="text_basic">Mapping the Health and Wealth of Nations (1900-2015)</h1>
+	&nbsp;
+	<div class="alert alert-info fade in">
+    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    	<strong><u>Info!</u></strong> Below visualization is based on <a href="http://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen" target="_blank;"> Hans Rosling's 2006 TED Talk.</a> <i>(It opens in a new tab.)</i>
+    	<br/><br/>
+    	<strong><u>Details:</u></strong> In this assignment we've recreated the GapMinder World visualisation using d3.js. This visualization include following details:
+    	<ul>
+    		<li>A <strong><u>Bubble Plot</u></strong> representing the countries of the world.</li>
+    		<li><strong><u>Size of bubble</u></strong> represents population of each country.</li>
+    		<li><strong><u>Color</u></strong> represents region of the country. There are total 8 regions.</li>
+    		<li><strong><u>X Axis</u></strong> represents Income per person in US Dollars (Log Scale).</li>
+    		<li><strong><u>Y Axis</u></strong> represents Life expectancy in years.</li>
+    		<li><strong><u>Year Label </u></strong> represents current year data.</li>
+    	</ul>
+    	<br/>
+    	<strong><u>Functionalities:</u></strong>
+    	<ul>
+    		<li><strong><u>Animation</u></strong> for data transition over the years which starts automatically when page is loaded.</li>
+    		<li>A <strong><u>slider</u></strong> on the right side of the chart which changes based on the year.</li>
+    		<li>To <strong><u>change year manually</u></strong>, drag button on the slider. If there is no data for a selected year, it will not change anything on the chart.</li>
+    		<li><strong><u>Hover</u></strong> on the particular bubble to get information about the Country, it's GDP and Life Expectancy for the selected Year.</li>
+    		<li><strong><u>Click</u></strong> on the bubble to get positioning of all countries sharing same region for the selected year. <strong><u>Tip:</u></strong> While animation is on, click on any bubble and don't move mouse to see progress of complete region all together. You'll also able to see progress of other countries in the background in blur.</li>
+    		<li>Use <strong><u>buttons</u></strong> for "replay", "pause" and "resume" animation. "Replay" will start animation from 1900 again. <strong><u>Tip:</u></strong> You can drag slider to a particular year and resume the animation from that point.</li>
+    	</ul>
+  	</div>
+	&nbsp;
+	<div>
+		<div class = "child" style="width: 1250px; float: left;">
+			<p id="chart">
+			</p>
+		</div>
+		<div class = "child" style="width: 100px; margin: 0 auto;">
+			<div id="slider-vertical" style="height:520px; margin-top: 20px;"></div>
+		</div>
+	</div>
+	&nbsp;
+	<div class="replay_button">
+		<a href="#" class="replay_button_class" id="replay_button_id">Replay</a>
+		<a href="#" class="replay_button_class" id="pause_button_id">Pause</a>
+		<a href="#" class="replay_button_class" id="resume_button_id">Resume</a>
+	</div>
+	&nbsp;
+	<div class="alert alert-info fade in">
+    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    	<strong><u>Info!</u></strong> Below visualization shows Top 30 countries for selected year. 
+    	<br/>
+    	We have considered 3 factors for calculation: Population, GDP and Life Expectancy of the country on the selected year.
+    	<br/>
+    	<strong><u>Formula:</u></strong> We've used Harmonic Mean to calculate the score for each country. Then updated the Harmonic Mean field in "Gapminder_All_Time_mean.csv" file. 
+    	<br/><br/>
+    	<div class="tab">3 * Population * GDP * Life Expectancy</div>
+    	Score = ------------------------------------------------------------
+		<div class="tab">(Population + GDP + Life Expectancy)</div><br/>
+		<strong><u>Why we used HM</u></strong> As value of Population is very high in comparison to GDP and Life Expectancy, usage of Arithmetic Mean (AM) or Geometic Mean (GM) would give unbalanced score (more towards the Population of the country). In our opinion, HM gives most balanced score with all the three parameters.
+		<br/><br/>
+		<strong><u>References for choosing HM over AM and GM:</u></strong> <i>(All links open in new tab.)</i><br/>
+		<ul>
+			<li>
+				<a href="http://stats.stackexchange.com/questions/23117/which-mean-to-use-and-when" target="_blank;">Cross Validated: Which "mean" to use and when?</a>
+			</li>
+			<li>
+				<a href="http://economistatlarge.com/finance/applied-finance/differences-arithmetic-geometric-harmonic-means" target="_blank;">Differences between Arithmetic, Geometric, and Harmonic Means</a>
+			</li>
+			<li>
+				<a href="https://en.wikipedia.org/wiki/Harmonic_mean" target="_blank;">Wikipedia: Harmonic Mean</a>
+			</li>
+		</ul>
+		<br/>
+		<strong><u>Functionalities:</u></strong>
+		<ul>
+		    <li><strong><u>X Axis</u></strong> represents top 30 Countries.</li>
+		    <li><strong><u>Y Axis</u></strong> represents Harmonic Mean score.</li>
+			<li><strong><u>Color</u></strong> of bar represents the region mentioned in above GapMinder World Visualization.</li>
+			<li><strong><u>Slider</u></strong> to change the year. By default selection of year is 1900. </li>
+			<li><strong><u>Header Message</u></strong> shows current selected year.</li>
+			<li>It will give an <strong><u>Alert Message</u></strong> when there is no data for the selected year, like 1912 and it will not show any bar graph.</li>
+			<li><strong><u>Hover</u></strong> on bars to view score of the particular country for selected year.</li>
+		</ul>
+  	</div>
+	&nbsp;
+	<h1 class="text_basic" id="top_30_text"></h1>
+	&nbsp;
+	<div>
+		<div class = "child" style="width: 1250px; float: left;">
+			<p id="bar_chart">
+			</p>
+		</div>
+		<div class = "child" style="width: 100px; margin: 0 auto;">
+			<div id="slider-vertical2" style="height:400px; margin-top: 20px;"></div>
+		</div>
+	</div>
+	<p><strong><u>Resources used to create above visualisations:</u></strong></p>
+		<ul style="padding-left: 80px;">
+			<li><strong><u>Data:</u></strong> GapMinder Data given in Moodle.</li>
+			<li><strong><u>JS Library:</u></strong> d3 v3</li>
+			<li><strong><u>JS Library:</u></strong> JQuery-1.12.4</li>
+			<li><strong><u>JS Library:</u></strong> JQuery UI for slider</li>
+			<li><strong><u>CSS:</u></strong> JQuery UI CSS</li>
+			<li><strong><u>JS Library:</u></strong> Bootstrap for Information Messages.</li>
+			<li><strong><u>CSS:</u></strong> JQuery Bootstrap CSS</li>
+			<li><strong><u>Google Fonts:</u></strong> Placed in Year of GapMinder World Visualisation</li>
+		</ul>
+</body>
+<script src="replica.js"></script>
+</html>

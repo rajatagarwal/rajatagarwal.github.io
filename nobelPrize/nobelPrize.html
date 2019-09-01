@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		<meta charset="utf-8">
+		<title>Nobel Laureates: Country of Birth</title>
+		<style type="text/css">
+
+			body { 
+		        background-color: white;
+		        font-family: 'PT Serif', serif;
+		    }
+
+		    h1 {
+		        font-weight: 400;
+		        color: #08306b;
+		        font-family: 'PT Sans', sans-serif;
+		        font-size: 52px;
+		        margin-bottom: 10px;
+		        margin-top: 20px;
+		        padding-left: 50px;
+		    }
+		    h3 {
+		        font-weight: 200;
+		        color: #08306b;
+		        font-family: 'PT Sans', sans-serif;
+		        font-size: 30px;
+		        margin-bottom: 10px;
+		        margin-top: 20px;
+		        padding-left: 50px;
+		    }
+		    p {
+		        font-size: 18px;
+		        width: 1350px;
+		        margin-top: 10px;
+		        padding-left: 50px;
+		        margin-bottom: 10px;
+		    }
+		    ul{
+		        padding-left: 100px;
+		    }
+		    li {
+		        font-size: 18px;
+		        width: 1200px;
+		        margin-top: 10px;
+		        margin-bottom: 10px;
+		    }
+
+		    a {
+		        color: #08306b;
+		    }
+
+		    a:hover {
+		        color: #6a51a3;
+		    }
+
+		    .footer {
+		        font-size: 14px;
+		        margin-top: 0px;
+		    }
+
+		    select {
+		        font-family: "Roboto";
+		        font-size: 16px;
+		    }
+
+		    .dropdown {
+		        display: inline;
+		        padding-left: 10px;
+		    }
+
+		    svg {
+		        background-color: white;
+		    }
+
+		    .bar_ch:hover {
+		        fill: #08306b;
+		    }
+
+		    .value {
+		        fill: white;
+		    }
+
+		    .axis path,
+		    .axis line {
+		        fill: none;
+		        stroke: black;
+		        shape-rendering: crispEdges;
+		    }
+		    
+		    .axis text {
+		        font-family: sans-serif;
+		        font-size: 10px;
+		    }
+
+		    .x.axis text {
+		        opacity: 0;
+		    }
+
+		    .y.axis path,
+		    .y.axis line {
+		        stroke: #fff;
+		        stroke-dasharray: 1,2;
+		        opacity: 1;
+		        pointer-events: none;
+		    }
+
+		    div.tooltip_choropleth {   
+		        position: absolute;         
+		        text-align: center;         
+		        white-space: normal;                    
+		        padding: 2px;               
+		        font-size: 14px;        
+		        background: whitesmoke; 
+		        border: 1px solid gray; 
+		        border-radius: 4px;         
+		        pointer-events: none;
+		        cursor: none;           
+		    }
+		    div.tooltip {   
+		        position: absolute;         
+		        text-align: center;         
+		        white-space: normal;                    
+		        padding: 2px;               
+		        font-size: 14px;        
+		        background: whitesmoke; 
+		        border: 1px solid gray; 
+		        border-radius: 4px;         
+		        pointer-events: none;
+		        cursor: none;           
+		    }
+		    .line_world_population {
+		        fill: none;
+		        stroke: #08306b;
+		        stroke-width: 3px;
+		    }
+		</style>
+	</head>
+	<body>
+		<h1>Nobel Laureates: Country of Birth</h1>
+		<p>Choose the prize category:  <span id="opt"></span></p>
+		<div width="1350" height="600" style="padding-left: 50px;" id="svganchor"></div>
+		<p>Data from 1901-2016. Source of the data: <a href="https://www.nobelprize.org/nobel_prizes/lists/countries.html">Nobel Prizes database</a>.</p>
+		<a href="nobelPrizeYear.html">Year Wise Nobel Prize Animation</a>
+		<p class="footer">Created by Rajat Agrawal.</p>
+	</body>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="https://d3js.org/d3-geo.v1.min.js"></script>
+	<script src="nobelPrize_Choropleth.js"></script>
+</html>
